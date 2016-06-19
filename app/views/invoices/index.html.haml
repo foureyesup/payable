@@ -1,0 +1,33 @@
+%h1 Listing invoices
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Customer
+      %th Invoice number
+      %th Invoice date
+      %th Due date
+      %th Terms
+      %th Message
+      %th
+      %th
+      %th
+
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= invoice.user_id
+        %td= invoice.customer_id
+        %td= invoice.invoice_number
+        %td= invoice.invoice_date
+        %td= invoice.due_date
+        %td= invoice.terms
+        %td= invoice.message
+        %td= link_to 'Show', invoice
+        %td= link_to 'Edit', edit_invoice_path(invoice)
+        %td= link_to 'Destroy', invoice, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Invoice', new_invoice_path

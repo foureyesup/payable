@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  given_name: MyText
+  family_name: MyText
+  company: MyText
+  email: MyText
+  address_line1: MyText
+  address_line2: MyText
+  city: MyString
+  region: MyText
+  zip: MyText
+  country: MyText
+  phone: MyText
+  vat_number: MyText
+  payment_terms: MyText
+  vat: MyText
+
+two:
+  user_id: 1
+  given_name: MyText
+  family_name: MyText
+  company: MyText
+  email: MyText
+  address_line1: MyText
+  address_line2: MyText
+  city: MyString
+  region: MyText
+  zip: MyText
+  country: MyText
+  phone: MyText
+  vat_number: MyText
+  payment_terms: MyText
+  vat: MyText
