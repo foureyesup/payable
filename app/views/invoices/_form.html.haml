@@ -9,6 +9,9 @@
     = f.input :due_date
     = f.input :terms
     = f.input :message
+    = f.simple_fields_for :customer do |c|
+      =c.input :company
+      =c.input :email
 
   .form-actions
     = f.button :submit
