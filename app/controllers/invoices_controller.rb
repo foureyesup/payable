@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  autocomplete :customer, :company, :extra_data => [:email]
 
   # GET /invoices
   # GET /invoices.json

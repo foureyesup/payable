@@ -10,7 +10,7 @@
     = f.input :terms
     = f.input :message
     = f.simple_fields_for :customer do |c|
-      =c.input :company
+      =c.input :company, :url => autocomplete_customer_company_invoices_path, :as => :autocomplete, :update_elements => {:id => '#id_element', :email => '#invoice_customer_attributes_email'}
       =c.input :email
 
   .form-actions
