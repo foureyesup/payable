@@ -23,6 +23,7 @@ gem 'high_voltage'
 gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
+gem 'fuelux-rails-sass'
 group :development do
   gem 'better_errors'
   gem 'html2haml'

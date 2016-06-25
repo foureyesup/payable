@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+//= require fuelux
 //= require_tree .

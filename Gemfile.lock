@@ -69,6 +69,9 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    fuelux-rails-sass (3.14.2)
+      railties (>= 3.1)
+      sass-rails
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -198,6 +201,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  fuelux-rails-sass
   haml-rails
   high_voltage
   html2haml
