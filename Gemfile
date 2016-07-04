@@ -24,6 +24,7 @@ gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
 gem 'fuelux-rails-sass'
+gem 'clearbit'
 group :development do
   gem 'better_errors'
   gem 'html2haml'

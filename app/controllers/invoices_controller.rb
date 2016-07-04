@@ -62,6 +62,21 @@ class InvoicesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def address_lookup
+    domain = params[:domain]
+    Clearbit.key = 'eda07a859233a7919f6929e9dcc57ca2'
+    company = Clearbit::Enrichment::Company.find(domain: domain, stream: true)
+    if company
+      line1 = company.geo["streetNumber"] + " " + company.geo["streetName"]
+      line2 = company.geo["subPremise"]
+      city = company.geo["city"]
+      zip = company.geo["postalCode"]
+      company.geo["stateCode"]
+      country = company.geo["country"]
+    end
+  end
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.
