@@ -25,13 +25,9 @@
     .step-content
       .step-pane.active.sample-pane.alert{"data-step" => "1"}
         %h4 Create Your Customer
-        .form-inputs    
+        .form-inputs        
           = f.simple_fields_for :customer do |c|
             =c.input :company, :url => autocomplete_customer_company_invoices_path, :as => :autocomplete, :update_elements => {:id => '#id_element', :email => '#invoice_customer_attributes_email', :given_name => '#invoice_customer_attributes_given_name', :family_name => '#invoice_customer_attributes_family_name', :address_line1 => '#invoice_customer_attributes_address_line1', :address_line2 => '#invoice_customer_attributes_address_line2', :city => '#invoice_customer_attributes_city', :region => '#invoice_customer_attributes_region', :country => '#invoice_customer_attributes_country', :zip => '#invoice_customer_attributes_zip', :phone => '#invoice_customer_attributes_phone', :vat_number => '#invoice_customer_attributes_vat_number' }
-            %p.hint
-              Invoiced this customer before? Simply type the name of the publication and we'll autofill the details.
-            %p.hint
-              New customer? Type the name of the publication - if it's not found, you may have to fill out the forms manually :(
             =c.input :given_name
             =c.input :family_name
             =c.input :email

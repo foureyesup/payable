@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704050457) do
+ActiveRecord::Schema.define(version: 20160619042837) do
 
   create_table "customers", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,16 +54,6 @@ ActiveRecord::Schema.define(version: 20160704050457) do
     t.decimal  "unit_price"
     t.decimal  "vat"
     t.decimal  "total"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "payees", force: :cascade do |t|
-    t.text     "first_name"
-    t.text     "last_name"
-    t.text     "email"
-    t.integer  "user_id"
-    t.integer  "customer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
