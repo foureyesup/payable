@@ -32,10 +32,9 @@
               Invoiced this customer before? Simply type the name of the publication and we'll autofill the details.
             %p.hint
               New customer? Type the name of the publication - if it's not found, you may have to fill out the forms manually :(
-            =c.simple_fields_for :payee do |p|
-              =p.input :first_name
-              =p.input :last_name
-              =p.input :email
+            =c.input :given_name
+            =c.input :family_name
+            =c.input :email
             =c.input :address_line1
             =c.input :address_line2
             =c.input :city
