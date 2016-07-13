@@ -17,6 +17,7 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     @invoice.build_customer
+    @invoice.lines.build
   end
 
   # GET /invoices/1/edit
@@ -86,6 +87,6 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:user_id, :customer_id, :invoice_number, :invoice_date, :due_date, :terms, :message, customer_attributes: [:company, :email, :email, :given_name, :family_name, :address_line1, :address_line2, :city, :zip, :region, :phone, :vat_number, :country])
+      params.require(:invoice).permit(:user_id, :customer_id, :invoice_number, :invoice_date, :due_date, :terms, :message, customer_attributes: [:company, :email, :email, :given_name, :family_name, :address_line1, :address_line2, :city, :zip, :region, :phone, :vat_number, :country], lines_attributes: [:id, :quantity, :description, :unit_price, :vat, :total])
     end
 end

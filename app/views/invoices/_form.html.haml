@@ -11,7 +11,7 @@
         %span.chevron
       %li{"data-name" => "template", "data-step" => "3"}
         %span.badge> 3
-        Submit
+        Line Items
         %span.chevron
   .actions
     %button.btn.btn-default.btn-prev{:type => "button"}
@@ -50,7 +50,11 @@
           = f.input :terms
           = f.input :message
       .step-pane.sample-pane.bg-danger.alert{"data-step" => "3"}
-        %h4 Add Your Own Details
+        %h4 Add Line Items
+        .form-inputs
+          = f.fields_for :lines do |builder|
+            = render 'line_fields', f: builder
+          = link_to_add_fields "Add Line", f, :lines
         .form-actions
           = f.button :submit
 
