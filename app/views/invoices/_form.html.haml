@@ -7,10 +7,14 @@
         %span.chevron
       %li{"data-step" => "2"}
         %span.badge> 2
-        Invoice
+        Customer Details
         %span.chevron
-      %li{"data-name" => "template", "data-step" => "3"}
+      %li{"data-step" => "3"}
         %span.badge> 3
+        Invoice Details
+        %span.chevron
+      %li{"data-name" => "template", "data-step" => "4"}
+        %span.badge> 4
         Line Items
         %span.chevron
   .actions
@@ -23,11 +27,15 @@
   = simple_form_for(@invoice) do |f|
     = f.error_notification
     .step-content
-      .step-pane.active.sample-pane.alert{"data-step" => "1"}
-        %h4 Create Your Customer
-        .form-inputs        
-          = f.simple_fields_for :customer do |c|
-            =c.input :company, :url => autocomplete_customer_company_invoices_path, :as => :autocomplete, :update_elements => {:id => '#id_element', :email => '#invoice_customer_attributes_email', :given_name => '#invoice_customer_attributes_given_name', :family_name => '#invoice_customer_attributes_family_name', :address_line1 => '#invoice_customer_attributes_address_line1', :address_line2 => '#invoice_customer_attributes_address_line2', :city => '#invoice_customer_attributes_city', :region => '#invoice_customer_attributes_region', :country => '#invoice_customer_attributes_country', :zip => '#invoice_customer_attributes_zip', :phone => '#invoice_customer_attributes_phone', :vat_number => '#invoice_customer_attributes_vat_number' }
+      = f.simple_fields_for :customer do |c|
+        .step-pane.active.sample-pane.alert{"data-step" => "1"}
+          %h4 Create Your Customer
+          .form-inputs
+            =c.input :company, :url => autocomplete_customer_company_invoices_path, :as => :autocomplete, :update_elements => {:id => '#id_element', :id => "#invoice_customer_attributes_id", :email => '#invoice_customer_attributes_email', :given_name => '#invoice_customer_attributes_given_name', :family_name => '#invoice_customer_attributes_family_name', :address_line1 => '#invoice_customer_attributes_address_line1', :address_line2 => '#invoice_customer_attributes_address_line2', :city => '#invoice_customer_attributes_city', :region => '#invoice_customer_attributes_region', :country => '#invoice_customer_attributes_country', :zip => '#invoice_customer_attributes_zip', :phone => '#invoice_customer_attributes_phone', :vat_number => '#invoice_customer_attributes_vat_number' }
+        .step-pane.active.sample-pane.alert{"data-step" => "2"}
+          %h4 Check Customer Details
+          .form-inputs
+            //=c.hidden_field :id       
             =c.input :given_name
             =c.input :family_name
             =c.input :email
@@ -39,17 +47,17 @@
             =c.input :country
             =c.input :phone
             =c.input :vat_number
-      .step-pane.sample-pane.bg-info.alert{"data-step" => "2"}
+      .step-pane.sample-pane.bg-info.alert{"data-step" => "3"}
         %h4 Set Up Your Invoice
         .form-inputs
           = f.input :user_id
           = f.input :customer_id
           = f.input :invoice_number
-          = f.input :invoice_date
+          = f.input_field :invoice_date, "data-initialize" => "datepicker"
           = f.input :due_date
           = f.input :terms
           = f.input :message
-      .step-pane.sample-pane.bg-danger.alert{"data-step" => "3"}
+      .step-pane.sample-pane.bg-danger.alert{"data-step" => "4"}
         %h4 Add Line Items
         .form-inputs
           = f.fields_for :lines do |builder|
@@ -60,3 +68,7 @@
 
 
 
+:javascript
+  $('#invoice_customer_attributes_company').bind('railsAutocomplete.select', function(event, data){
+    $('#myWizard').wizard('next');
+  });
