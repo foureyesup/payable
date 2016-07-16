@@ -36,22 +36,22 @@
           %h4 Check Customer Details
           .form-inputs
             //=c.hidden_field :id       
-            =c.input :given_name
-            =c.input :family_name
-            =c.input :email
             =c.input :address_line1
             =c.input :address_line2
             =c.input :city
             =c.input :region
             =c.input :zip
             =c.input :country
-            =c.input :phone
             =c.input :vat_number
       .step-pane.sample-pane.bg-info.alert{"data-step" => "3"}
         %h4 Set Up Your Invoice
         .form-inputs
+          = f.fields_for :payee do |p|
+            = p.hidden_field :id      
+            = p.input :first_name
+            = p.input :last_name
+            = p.input :email
           = f.input :user_id
-          = f.input :customer_id
           = f.input :invoice_number
           = f.input_field :invoice_date, "data-initialize" => "datepicker"
           = f.input :due_date

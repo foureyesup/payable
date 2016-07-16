@@ -4,6 +4,8 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :customer
   has_many :lines
   accepts_nested_attributes_for :lines, allow_destroy: true
+  has_one :payee
+  accepts_nested_attributes_for :payee
   
   def autosave_associated_records_for_customer
     new_customer = Customer.find_or_create_by(company: customer.company, given_name: customer.given_name, 
